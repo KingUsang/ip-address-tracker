@@ -15,10 +15,17 @@ const updateIpInfo = ({ ip, company, location: { city, state, local_time } }) =>
 const updateMap = (lat, long) => {
   const map = L.map('map').setView([lat, long], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
+    maxZoom: 50,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
-  L.marker([lat, long]).addTo(map)
+  const icon = L.icon({
+    iconUrl: './../images/icon-location.svg',
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+    shadowSize: [68, 95],
+    shadowAnchor: [22, 94]
+  });
+  L.marker([lat, long], { icon }).addTo(map)
 }
 
 const updateUI = async (ip = '') => {
@@ -29,12 +36,12 @@ const updateUI = async (ip = '') => {
     const ipDetails = await response.json()
     const { location: { latitude, longitude } } = ipDetails
     updateIpInfo(ipDetails)
-    updateMap(latitude,longitude)
+    updateMap(latitude, longitude)
   } catch (err) {
     console.error(err)
   }
 }
-searchForm.addEventListener('submit',(e) => {
+searchForm.addEventListener('submit', (e) => {
   e.preventDefault()
   updateUI(searchInput.textContent)
 })
