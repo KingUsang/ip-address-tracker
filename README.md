@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/KingUsang/ip-address-tracker-main)
-- Live Site URL: [Add live site URL here](https://kingusang.github.io/ip-address-tracker-main/)
+- Solution URL: [Add solution URL here](https://github.com/KingUsang/ip-address-tracker)
+- Live Site URL: [Add live site URL here](https://kingusang.github.io/ip-address-tracker/)
 
 ## My process
 
